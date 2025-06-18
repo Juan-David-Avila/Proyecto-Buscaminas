@@ -7,20 +7,20 @@ flowchart TD
     Juego --> Input[Solicitar filas, columnas y minas]
     Input --> CrearTablero[Llamar crear_tablero()]
     CrearTablero --> ColocarMinas[Llamar colocar_minas()]
-    ColocarMinas --> CicloWhile[Inicio ciclo while True]
-    
-    CicloWhile --> MostrarTablero[Llamar mostrar_tablero()]
+    ColocarMinas --> CicloWhile[Inicio del ciclo while True]
+
+    CicloWhile --> MostrarTablero[Mostrar tablero oculto]
     MostrarTablero --> PedirJugada[Pedir fila y columna al jugador]
     PedirJugada --> Revelar[Llamar revelar_celda()]
-    
-    Revelar --> EsMina{¿La celda tiene mina?}
+    Revelar --> EsMina{¿Es una mina?}
+
     EsMina -- Sí --> Perdiste[Mostrar "¡Perdiste!"]
     Perdiste --> MostrarFinal[Mostrar tablero completo]
-    MostrarFinal --> FinPerder([Fin del juego])
-    
-    EsMina -- No --> VerificarGanador{¿Todas las celdas sin minas fueron reveladas?}
+    MostrarFinal --> FinPerdiste([Fin del juego])
+
+    EsMina -- No --> VerificarGanador{¿Todas las celdas sin mina están reveladas?}
     VerificarGanador -- Sí --> Ganaste[Mostrar "¡Ganaste!"]
-    Ganaste --> MostrarFinalGanador[Mostrar tablero completo]
-    MostrarFinalGanador --> FinGanar([Fin del juego])
-    
+    Ganaste --> MostrarFinalGana[Mostrar tablero completo]
+    MostrarFinalGana --> FinGana([Fin del juego])
+
     VerificarGanador -- No --> CicloWhile
