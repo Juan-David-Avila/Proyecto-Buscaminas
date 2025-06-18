@@ -8,18 +8,22 @@ Este repositorio contiene una versión básica del juego **Buscaminas** implemen
 flowchart TD
     A[Inicio] --> B[Inicializar tablero]
     B --> C[Colocar minas aleatoriamente]
-    C --> D[Calcular números]
+    C --> D[Calcular números adyacentes]
     D --> E[Mostrar tablero]
-    E --> F[¿Entrada es válida?]
-    F -- NO --> E
-    F -- SÍ --> G[Verifica si coordenada es válida]
-    G --> H[Mostrar celda]
-    H --> I[¿Es mina?]
-    I -- SÍ --> J[Mostrar todas las celdas]
-    J --> K[Fin del juego - Derrota]
-    I -- NO --> L[¿La celda está vacía?]
-    L -- SÍ --> M[Revela celdas adyacentes]
-    M --> N[Verificar]
-    N --> O[Fin del juego - Victoria]
-    L -- NO --> P[Mostrar número]
-    P --> N
+    E --> F[Pedir entrada al usuario]
+    F --> G{¿Es salida?}
+    G -- Sí --> H[Terminar juego]
+    G -- No --> I{¿Coordenadas válidas?}
+    I -- No --> F
+    I -- Sí --> J[Revelar celda]
+    J --> K{¿Es mina?}
+    K -- Sí --> L[Mostrar todas las minas]
+    L --> M[Fin del juego - Derrota]
+    K -- No --> N{¿Es celda vacía?}
+    N -- Sí --> O[Revelar celdas adyacentes]
+    O --> P[Mostrar número]
+    P --> Q[Verificar victoria]
+    Q --> R{¿Completado?}
+    R -- Sí --> S[Fin del juego - Victoria]
+    R -- No --> F
+    N -- No --> P
