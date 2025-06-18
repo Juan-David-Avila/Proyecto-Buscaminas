@@ -1,5 +1,8 @@
-# Proyecto-Buscaminas
+# 🧠 Buscaminas en Python
 
+Este repositorio contiene una versión básica del juego **Buscaminas** implementada en Python. A continuación se presenta el diagrama de flujo que representa la lógica principal del programa.
+
+## 🔁 Diagrama de Flujo
 
 ```mermaid
 flowchart TD
@@ -20,4 +23,3 @@ flowchart TD
     N --> O[Fin del juego - Victoria]
     L -- NO --> P[Mostrar número]
     P --> N
-```
