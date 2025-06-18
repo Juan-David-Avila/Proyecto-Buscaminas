@@ -1,26 +1,23 @@
 # Proyecto-Buscaminas
 
 
+```mermaid
 flowchart TD
-    Start([Inicio del juego])
-    Start --> Juego[Llamar función juego()]
-    Juego --> Input[Solicitar filas, columnas y minas]
-    Input --> CrearTablero[Llamar crear_tablero()]
-    CrearTablero --> ColocarMinas[Llamar colocar_minas()]
-    ColocarMinas --> CicloWhile[Inicio del ciclo while True]
-
-    CicloWhile --> MostrarTablero[Mostrar tablero oculto]
-    MostrarTablero --> PedirJugada[Pedir fila y columna al jugador]
-    PedirJugada --> Revelar[Llamar revelar_celda()]
-    Revelar --> EsMina{¿Es una mina?}
-
-    EsMina -- Sí --> Perdiste[Mostrar "¡Perdiste!"]
-    Perdiste --> MostrarFinal[Mostrar tablero completo]
-    MostrarFinal --> FinPerdiste([Fin del juego])
-
-    EsMina -- No --> VerificarGanador{¿Todas las celdas sin mina están reveladas?}
-    VerificarGanador -- Sí --> Ganaste[Mostrar "¡Ganaste!"]
-    Ganaste --> MostrarFinalGana[Mostrar tablero completo]
-    MostrarFinalGana --> FinGana([Fin del juego])
-
-    VerificarGanador -- No --> CicloWhile
+    A[Inicio] --> B[Inicializar tablero]
+    B --> C[Colocar minas aleatoriamente]
+    C --> D[Calcular números]
+    D --> E[Mostrar tablero]
+    E --> F[¿Entrada es válida?]
+    F -- NO --> E
+    F -- SÍ --> G[Verifica si coordenada es válida]
+    G --> H[Mostrar celda]
+    H --> I[¿Es mina?]
+    I -- SÍ --> J[Mostrar todas las celdas]
+    J --> K[Fin del juego - Derrota]
+    I -- NO --> L[¿La celda está vacía?]
+    L -- SÍ --> M[Revela celdas adyacentes]
+    M --> N[Verificar]
+    N --> O[Fin del juego - Victoria]
+    L -- NO --> P[Mostrar número]
+    P --> N
+```
